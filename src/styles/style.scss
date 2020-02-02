@@ -1,0 +1,195 @@
+$headerHeight: 80px;
+$mobileHeaderHeight: 60px;
+$primaryColor: #ffa7c4;
+$linkHoverColor: #fff;
+$backgroundColor: #282c35;
+$mobileBackgroundColor: #1d222d;
+$mobileHeaderBorderTopBorderColor: #0b1018;
+
+$menuFontSize: 28px;
+
+@font-face {
+  font-family: "iosevka";
+  src: url("../assets/fonts/iosevka-regular.ttf");
+}
+
+@mixin fixedBottom {
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+@mixin linkColor {
+  a {
+    color: #fff;
+  }
+}
+
+@mixin centering {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+html,
+body {
+  margin: 0;
+  height: auto;
+  font-family: Iosevka;
+  max-width: 1000px;
+  margin: auto;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  padding: 0;
+  background: $backgroundColor;
+  color: #fff;
+}
+
+a {
+  color: $primaryColor;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: 0.3s;
+
+  &:hover {
+    transition: 0.3s;
+    background: $primaryColor;
+    color: $linkHoverColor;
+    cursor: pointer;
+  }
+}
+
+.read-more {
+  text-decoration: underline;
+  background: $primaryColor;
+  color: $linkHoverColor;
+
+  &:hover {
+    background: $linkHoverColor;
+    color: $primaryColor;
+  }
+}
+
+header {
+  position: relative;
+  margin: auto;
+  padding: 0px 50px;
+  height: $headerHeight;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  @include centering;
+  justify-content: space-evenly;
+
+  .logo {
+    text-align: center;
+
+    &:hover {
+      a {
+        background: $backgroundColor;
+      }
+    }
+  }
+
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: 15px;
+    justify-content: flex-end;
+    font-size: $menuFontSize;
+    font-weight: bold;
+
+    .active-menu {
+      background: $primaryColor;
+      color: $linkHoverColor;
+    }
+
+    a {
+      color: $primaryColor;
+      padding: 5px 10px;
+      text-align: center;
+
+      &:hover {
+        color: $linkHoverColor;
+      }
+    }
+  }
+}
+
+main {
+  display: grid;
+  justify-content: center;
+  height: calc(100vh - $headerHeight);
+  margin-bottom: $mobileHeaderHeight;
+  align-items: center;
+  padding: 30px;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  grid-gap: 10px;
+
+  .image-with-text {
+    display: grid;
+    grid-template-rows: 300px 50px;
+    @include centering;
+
+    .short-bio {
+      display: grid;
+      grid-template-rows: 20px 20px 20px;
+      justify-content: center;
+    }
+  }
+
+  .bio {
+    font-size: 20px;
+
+    .music-genres {
+      color: $primaryColor;
+      font-weight: bold;
+    }
+
+    blockquote {
+      text-align: center;
+    }
+  }
+}
+
+.img {
+  border: 2px solid #333;
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: 1fr;
+
+    .menu {
+      position: fixed;
+      background: $mobileBackgroundColor;
+      @include fixedBottom;
+      height: $mobileHeaderHeight;
+      border-top: 1px solid $mobileHeaderBorderTopBorderColor;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: space-evenly;
+      grid-template-columns: repeat(4, auto);
+    }
+  }
+
+  .home {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  }
+}
