@@ -132,14 +132,14 @@ main {
 
 .home {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   justify-content: center;
-  grid-gap: 10px;
 
   .image-with-text {
     display: grid;
     grid-template-rows: 300px 50px;
     @include centering;
+    justify-content: flex-start;
 
     .short-bio {
       display: grid;
@@ -191,5 +191,9 @@ main {
   .home {
     grid-template-columns: 1fr;
     grid-gap: 30px;
+
+    .image-with-text {
+      justify-content: center;
+    }
   }
 }
