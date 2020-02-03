@@ -1,0 +1,19 @@
+.contact {
+  @include contentSizing;
+
+  h1 {
+    color: #f8b9b9;
+  }
+
+  h2 {
+    color: #79b3ce;
+  }
+
+  li {
+    color: #69a589;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}

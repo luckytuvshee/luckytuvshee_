@@ -1,0 +1,32 @@
+.resume {
+  @include contentSizing;
+
+  .title {
+    padding-top: 30px;
+    color: #f2cb8c;
+  }
+}
+
+.resume-link {
+  text-transform: lowercase;
+  text-decoration: underline;
+  font-size: 22px;
+  font-style: italic;
+}
+
+.back-button {
+  border: 1px solid #90b3ce;
+  padding: 10px 15px 8px 15px;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 20px 130px;
+  justify-content: center;
+  text-align: center;
+  width: 150px;
+
+  &:hover {
+    color: $primaryColor;
+    background-color: $backgroundColor;
+    border: 1px solid #f8b9b9;
+  }
+}

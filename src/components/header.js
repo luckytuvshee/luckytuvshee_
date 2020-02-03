@@ -4,7 +4,7 @@ import React from "react"
 import { globalHistory } from "@reach/router"
 
 const Header = ({ siteTitle }) => {
-  const menus = ["home", "about", "resume", "blog"]
+  const menus = ["about", "contact", "projects", "blog"]
   const path = globalHistory.location.pathname.slice(1)
   const home = path === ""
 
@@ -18,10 +18,12 @@ const Header = ({ siteTitle }) => {
       <ul className="menu">
         {menus.map((menu, index) => (
           <Link
-            to={menu === "home" ? "/" : `/${menu}`}
+            to={menu === "about" ? "/" : `/${menu}`}
             key={index}
             className={
-              path === menu || (index === 0 && home) ? "active-menu" : ""
+              path.split("/")[0] === menu || (index === 0 && home)
+                ? "active-menu"
+                : ""
             }
           >
             {menu}

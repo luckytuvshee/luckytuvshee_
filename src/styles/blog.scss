@@ -1,0 +1,38 @@
+.blog-post-template {
+  @include contentSizing;
+  display: grid;
+
+  .post-header {
+    display: grid;
+    grid-template-rows: auto 30px;
+    align-items: flex-end;
+  }
+}
+
+.blog {
+  @include contentSizing;
+
+  .post {
+    -webkit-box-shadow: 0px 0px 35px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 35px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 35px -6px rgba(0, 0, 0, 0.75);
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-rows: auto 30px auto;
+    align-items: center;
+    align-content: center;
+    border: none;
+    padding: 10px;
+  }
+
+  .post-title {
+    color: $primaryColor;
+    font-size: 22px;
+    font-weight: bold;
+
+    &:hover {
+      color: $primaryColor;
+      background: $backgroundColor;
+    }
+  }
+}

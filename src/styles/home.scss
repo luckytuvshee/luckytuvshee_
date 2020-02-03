@@ -1,0 +1,40 @@
+.home {
+  display: grid;
+  grid-template-columns: auto 50%;
+  justify-content: center;
+  grid-gap: 20px;
+
+  .image-with-text {
+    display: grid;
+    grid-template-rows: 300px 50px;
+    @include centering;
+    justify-content: flex-start;
+
+    .short-bio {
+      display: grid;
+      grid-template-rows: 24px 20px 20px;
+      justify-content: center;
+    }
+  }
+
+  .bio {
+    font-size: 20px;
+
+    .music-genres {
+      color: $primaryColor;
+      font-weight: bold;
+    }
+
+    blockquote {
+      text-align: center;
+    }
+  }
+}
+
+.img {
+  border: 2px solid #333;
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  z-index: -1;
+}

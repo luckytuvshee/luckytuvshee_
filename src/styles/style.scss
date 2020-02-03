@@ -32,6 +32,22 @@ $menuFontSize: 28px;
   text-align: center;
 }
 
+@mixin contentSizing {
+  max-width: 750px;
+  min-width: 550px;
+
+  @media (max-width: 600px) {
+    max-width: 750px;
+    min-width: 300px;
+  }
+}
+
+@import "./home.scss";
+@import "./contact.scss";
+@import "./resume.scss";
+@import "./blog.scss";
+@import "./projects.scss";
+
 html,
 body {
   margin: 0;
@@ -63,6 +79,31 @@ a {
     color: $linkHoverColor;
     cursor: pointer;
   }
+}
+
+h1 {
+  font-size: 34px;
+}
+
+h2 {
+  color: #97b3ce;
+}
+
+h3 {
+  color: #69a589;
+}
+
+li {
+  font-size: 22px;
+  color: #69a589;
+
+  a {
+    color: #69a589;
+  }
+}
+
+p {
+  font-size: 20px;
 }
 
 .read-more {
@@ -124,50 +165,9 @@ header {
 main {
   display: grid;
   justify-content: center;
-  height: calc(100vh - $headerHeight);
   margin-bottom: $mobileHeaderHeight;
-  align-items: center;
+  align-items: flex-start;
   padding: 30px;
-}
-
-.home {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  justify-content: center;
-
-  .image-with-text {
-    display: grid;
-    grid-template-rows: 300px 50px;
-    @include centering;
-    justify-content: flex-start;
-
-    .short-bio {
-      display: grid;
-      grid-template-rows: 20px 20px 20px;
-      justify-content: center;
-    }
-  }
-
-  .bio {
-    font-size: 20px;
-
-    .music-genres {
-      color: $primaryColor;
-      font-weight: bold;
-    }
-
-    blockquote {
-      text-align: center;
-    }
-  }
-}
-
-.img {
-  border: 2px solid #333;
-  border-radius: 50%;
-  height: 300px;
-  width: 300px;
-  z-index: -1;
 }
 
 @media (max-width: 768px) {
@@ -194,6 +194,19 @@ main {
 
     .image-with-text {
       justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  header {
+    .menu {
+      height: 40px;
+      justify-content: center;
+      a {
+        $mobileHeaderHeight: 20px;
+        font-size: 18px;
+      }
     }
   }
 }

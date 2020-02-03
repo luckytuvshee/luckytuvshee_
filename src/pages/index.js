@@ -30,16 +30,24 @@ const IndexPage = () => {
             My name is Tuvshinsanaa, and I am full-stack JavaScript developer.
             In my spare time enjoy my favourite{" "}
             <span className="music-genres">
-              (usually Tropical House, Deep House, Progressive House, Eurodance,
-              Vocaloid and some soundtrack such as NieR: Automata, Tron: Legacy)
+              (house music, japanese vocaloids, eurodance)
             </span>{" "}
-            music tracks and discover new and old music.
+            music tracks and I like to customize my distro which is mostly Arch
+            with i3. You can see my dotfiles from{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/luckytuvshee/dotfiles"
+            >
+              Github
+            </a>
+            .
           </p>
-
-          <Link className="read-more" to="/about">
-            Read more
+          For more details, see my{" "}
+          <Link className="resume-link" to="/resume">
+            resume
           </Link>
-
+          {"."}
           <blockquote>
             "Everything is theoretically impossible, until it is done." <br /> ―
             Robert A. Heinlein
