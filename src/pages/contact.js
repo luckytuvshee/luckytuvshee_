@@ -7,7 +7,7 @@ const Contact = () => (
     <SEO title="Contact" />
     <section className="contact">
       <h1>I'm always happy to hear from you.</h1>
-      <h2>luckytuvshee@gmail.com</h2>
+      <h2>luckytuvshee99@gmail.com</h2>
 
       <ul>
         <li>

@@ -198,6 +198,12 @@ main {
   }
 }
 
+.not-found-page {
+  @include contentSizing;
+  display: grid;
+  grid-template-rows: 80px auto auto;
+}
+
 @media (max-width: 400px) {
   header {
     .menu {
