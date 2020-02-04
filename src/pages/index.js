@@ -32,8 +32,11 @@ const IndexPage = () => {
             <span className="music-genres">
               (house music, japanese vocaloids, eurodance)
             </span>{" "}
-            music tracks and I like to customize my distro which is mostly Arch
-            with i3. You can see my dotfiles from{" "}
+            music tracks and I like to customize my distro which is mostly{" "}
+            <strong style={{ textDecoration: "underline" }}>
+              Arch with i3
+            </strong>
+            . You can see my dotfiles from{" "}
             <a
               target="_blank"
               rel="noopener noreferrer"

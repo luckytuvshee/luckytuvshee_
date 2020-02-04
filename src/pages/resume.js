@@ -1,10 +1,23 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Link } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import Icon from "../assets/svg/arrow-left.svg"
 
 const Resume = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allFile(filter: { extension: { eq: "pdf" } }) {
+        edges {
+          node {
+            publicURL
+            name
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <Layout>
       <SEO title="Resume" />
@@ -22,10 +35,19 @@ const Resume = () => {
           Resume -{" "}
           <a
             target="_blank"
+            download
             rel="noopener noreferrer"
-            href="https://luckytuvshee.files.wordpress.com/2019/12/tuvshinsanaas-resume-2.pdf"
+            href={data.allFile.edges[0].node.publicURL}
           >
             Download
+          </a>{" "}
+          <span>&#8226;</span>{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={data.allFile.edges[0].node.publicURL}
+          >
+            View
           </a>
         </h1>
         <hr />
