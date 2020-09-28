@@ -27,10 +27,13 @@ const IndexPage = () => {
         <article className="bio">
           <h1>Hello</h1>
           <p>
-            My name is Tuvshinsanaa, and I am full-stack JavaScript developer.
-            In my spare time enjoy my favourite{" "}
+            My name is Tuvshinsanaa. I am full-stack developer, also interested
+            in Machine Learning specifically{" "}
+            <span className="ml">Deep Learning</span> and{" "}
+            <span className="ml">NLP</span>. In my spare time enjoy my favourite{" "}
             <span className="music-genres">
-              (house music, japanese vocaloids, eurodance)
+              (favourite genres: House, Lo-Fi, Rock, Japanese vocaloid,
+              Eurodance, Eurobeat)
             </span>{" "}
             music tracks and I like to customize my distro which is mostly{" "}
             <strong style={{ textDecoration: "underline" }}>
