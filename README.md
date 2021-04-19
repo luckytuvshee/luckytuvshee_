@@ -1,3 +1,3 @@
 # Hello
 
-`Hosted on netlify` [luckytuvshee.netlify.com](https://luckytuvshee.netlify.com)
+`Portfolio` [luckytuvshee.me](https://luckytuvshee.me)
