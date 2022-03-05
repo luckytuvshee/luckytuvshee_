@@ -1,44 +1,55 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path')
+const { createFilePath } = require('gatsby-source-filesystem')
 
-// You can delete this file if you're not using it
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  if (node.internal.type === 'MarkdownRemark') {
+    const filePath = createFilePath({ node, getNode })
+    const slug = filePath === '/index/' ? '/' : filePath
 
-const path = require("path")
-exports.createPages = async ({ actions, graphql, reporter }) => {
-  const { createPage } = actions
-  const postTemplate = path.resolve(`src/templates/post.js`)
+    actions.createNodeField({
+      node,
+      name: 'slug',
+      value: slug
+    })
+  }
+}
 
-  const result = await graphql(`
+exports.createPages = async ({ graphql, actions }) => {
+  const MARKDOWN_PAGE_TEMPLATES_FOLDER = './src/markdownPageTemplates'
+
+  const allMarkdown = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(limit: 1000) {
         edges {
           node {
-            html
-            id
+            fields {
+              slug
+            }
             frontmatter {
-              path
-              title
-              date
-              description
+              templateKey
             }
           }
         }
       }
     }
   `)
-  // Handle errors
-  if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return
+
+  if (allMarkdown.errors) {
+    console.error(allMarkdown.errors)
+    throw new Error(allMarkdown.errors)
   }
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: node.frontmatter.path,
-      component: postTemplate,
-      context: {}, // additional data can be passed via context
-    })
-  })
+
+  const isPageNode = ({ node }) => !!node.frontmatter.templateKey
+
+  allMarkdown.data.allMarkdownRemark.edges
+    .filter(isPageNode)
+    .forEach(({ node: { fields: { slug }, frontmatter: { templateKey } } }) =>
+      actions.createPage({
+        path: slug,
+        component: path.resolve(
+          `${MARKDOWN_PAGE_TEMPLATES_FOLDER}/${templateKey}/index.tsx`
+        ),
+        context: { slug }
+      })
+    )
 }

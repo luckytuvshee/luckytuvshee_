@@ -1,59 +1,57 @@
 module.exports = {
   siteMetadata: {
-    title: `LuckyTuvshee`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: 'Tuvshinsanaa Tuul',
+    siteUrl: 'https://luckytuvshee.me',
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-preact',
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-catch-links',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pages`,
         path: `${__dirname}/src/pages`,
+        name: 'pages',
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-transformer-remark',
       options: {
-        name: `data`,
-        path: `${__dirname}/src/data`,
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1000,
+              linkImagesToOriginal: false,
+              backgroundColor: 'transparent',
+            },
+          },
+          'gatsby-remark-copy-linked-files',
+          {
+            resolve: 'gatsby-remark-smartypants',
+            options: {
+              dashes: 'oldschool',
+            },
+          },
+        ],
       },
     },
     {
-      resolve: `gatsby-plugin-react-svg`,
+      resolve: 'gatsby-plugin-nprogress',
       options: {
-        rule: {
-          include: /assets/,
-        },
+        color: '#44B284',
+        showSpinner: false,
       },
     },
-    `gatsby-transformer-remark`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/luckytuvshee_logo.jpeg`, // This path is relative to the root of the site.
-      },
-    },
-
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    'gatsby-plugin-webpack-bundle-analyser-v2',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-netlify-cache',
+    'gatsby-transformer-sqip',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-offline',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-netlify', // place as last in the array. ref: https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-netlify#how-to-use
   ],
 }
